@@ -1,0 +1,80 @@
+body {
+    font-family: Pretendard;
+    margin: 0;
+}
+
+.topNav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.topNav-box1 {
+    display: flex;
+    cursor: pointer;
+}
+
+.topNav-box1 p {
+    margin: 0;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.sangmyungImg {
+    width: 30px;
+    height: auto;
+}
+
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background-color: #F4F4F4;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.sidebar-top {
+    margin-top: 30px;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    border-bottom: solid 1px #5A5A5A;
+    cursor: pointer;
+}
+
+.sidebar-top-text p {
+    margin: 0;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.sidebar-login {
+    margin-left: 20px;
+    margin-top: 20px;
+    display: flex;
+    border-bottom: solid 1px #5A5A5A;
+    padding-bottom: 15px;
+}
+
+.sidebar-login p {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 10px
+}
+
+.sidebar-menu {
+    font-size: 18px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.sidebar-menu p {
+    cursor: pointer;
+}
