@@ -78,11 +78,57 @@
     <div class="login-box">
         <div class="login-input-box">
             <p>로그인</p>
-            <input type="text" placeholder="아이디를 입력하세요.">
-            <input type="password" placeholder="비밀번호를 입력하세요.">
-            <button>로그인</button>
+            <input type="text" placeholder="아이디를 입력하세요." id="username">
+            <input type="password" placeholder="비밀번호를 입력하세요." id="password">
+            <button id="loginButton">로그인</button>
         </div>
         <div class="img-box"></div>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const initialData = {
+            users: [
+                { userId: "admin", password: "admin", userNm: "관리자", lastDate: "2023-12-31", isLocker: "-1", memo: "관리자"},
+                { userId: "happy", password: "call", userNm: "행복", lastDate: "2023-10-31", isLocker: "1234", memo: "마감지남"},
+                { userId: "luck", password: "key", userNm: "행운", lastDate: "2023-12-20", isLocker: "4321", memo: "정상"},
+                { userId: "how", password: "areyou", userNm: "안녕", lastDate: "2024-02-28", isLocker: "-1", memo: "사물함 없음"},
+            ]
+        };
+
+        localStorage.setItem("myData", JSON.stringify(initialData));
+
+        console.log("초기 데이터가 자동으로 저장되었습니다.");
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginButton = document.getElementById('loginButton');
+
+        loginButton.addEventListener('click', function () {
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+
+            const savedData = localStorage.getItem("myData");
+
+            if (savedData) {
+                const parsedData = JSON.parse(savedData);
+                const users = parsedData.users;
+
+                const enteredUsername = usernameInput.value;
+                const enteredPassword = passwordInput.value;
+
+                const user = users.find(u => u.userId === enteredUsername && u.password === enteredPassword);
+
+                if (user) {
+                    alert("로그인되었습니다.");
+                    window.location.href = "main.html";
+                } else {
+                    alert("로그인 실패. 아이디 또는 비밀번호를 확인하세요.")
+                }
+            } else {
+                console.log("저장된 데이터 없음");
+            }
+        })
+    })
+</script>
 </html>
