@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>고객문의</title>
+    <title>이벤트</title>
     <link href="topside.css" rel="stylesheet" type="text/css">
+    <link href="board.css" rel="stylesheet" type="text/css">
     <script src="./sidebar.js"></script>
 <style>
 
@@ -33,7 +34,7 @@
                         <p>스포츠센터</p>
                     </div>
                 </div>
-                <div class="sidebar-login">
+                <div class="sidebar-login" onclick="location.href='login.html'">
                     <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="22.5" cy="22.5" r="22.5" fill="#D9D9D9"/>
                         <path d="M23 11C24.4587 11 25.8576 11.5795 26.8891 12.6109C27.9205 13.6424 28.5 15.0413 28.5 16.5C28.5 17.9587 27.9205 19.3576 26.8891 20.3891C25.8576 21.4205 24.4587 22 23 22C21.5413 22 20.1424 21.4205 19.1109 20.3891C18.0795 19.3576 17.5 17.9587 17.5 16.5C17.5 15.0413 18.0795 13.6424 19.1109 12.6109C20.1424 11.5795 21.5413 11 23 11ZM23 24.75C29.0775 24.75 34 27.2112 34 30.25V33H12V30.25C12 27.2112 16.9225 24.75 23 24.75Z" fill="#5A5A5A"/>
@@ -42,9 +43,34 @@
                 </div>
                 <div class="sidebar-menu">
                     <p onclick="location.href='health-guide.html'">운동방법</p>
-                    <p onclick="location.href='registration.html'">정기결제</p>
+                    <p onclick="location.href='registration.html'">마이페이지</p>
                     <p onclick="location.href='faq.html'">고객문의</p>
                     <p onclick="location.href='notice.html'">공지사항</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-box">
+            <h2>FAQ</h2>
+            <div class="faq-in-topbox">
+                <p style="flex-basis: 10%;">번호</p>
+                <p style="flex-basis: 70%;">제목</p>
+                <p style="flex-basis: 20%;">등록일자</p>
+            </div>
+            <div class="faq-in-box">
+                <div class="faq-q">
+                    <p style="flex-basis: 10%;">1</p>
+                    <p style="flex-basis: 70%;">질문입니다.</p>
+                    <p style="flex-basis: 20%;">2023-12-09</p>
+                </div>
+                <div class="faq-q">
+                    <p style="flex-basis: 10%;">1</p>
+                    <p style="flex-basis: 70%;">질문입니다.</p>
+                    <p style="flex-basis: 20%;">2023-12-09</p>
+                </div>
+                <div class="faq-q">
+                    <p style="flex-basis: 10%;">1</p>
+                    <p style="flex-basis: 70%;">질문입니다.</p>
+                    <p style="flex-basis: 20%;">2023-12-09</p>
                 </div>
             </div>
         </div>

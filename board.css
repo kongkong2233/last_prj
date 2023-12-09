@@ -1,0 +1,35 @@
+.faq-box {
+    width: 1600px;
+    margin: 0 auto;
+}
+
+.faq-box h2 {
+    font-size: 48px;
+}
+
+.faq-in-topbox {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+    background-color: #D8DAE5;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+.faq-in-box {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.faq-q {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: solid 1px #C9CBDD;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}

@@ -3,11 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정기결제</title>
+    <title>개인페이지</title>
     <link href="topside.css" rel="stylesheet" type="text/css">
     <script src="./sidebar.js"></script>
 <style>
+    .profile-top {
+        width: 100%;
+        height: 300px;
+        background-color: #A3C2F1;
+        margin-top: -10px;
+    }
 
+    .user-profile-main {
+        padding-top: 50px;
+        padding-left: 300px;
+        display: flex;
+    }
+
+    .user-profile-main p {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        margin-left: 100px;
+    }
+
+    .user-profile-main span {
+        font-size: 24px;
+        font-weight: 500;
+        margin-left: 110px;
+    }
+
+    .locker1 {
+        width: 1300px;
+        height: 400px;
+        margin: 0 auto;
+        box-shadow: 2px 2px 2px 2px gray;
+        border-radius: 15px;
+        margin-top: 30px;
+        display: flex;
+    }
+
+    .locker-password {
+        padding-top: 20px;
+        padding-left: 30px;
+        font-size: 24px;
+        font-weight: 500;
+        width: 400px;
+    }
+
+    .locker-password span {
+        font-size: 16px;
+    }
+
+    .locker-password input {
+        width: 60%;
+        padding: 5px 10px 5px 10px;
+        border-radius: 8px;
+    }
+
+    .locker-in {
+        width: 900px;
+        height: auto;
+        background-color: silver;
+        border-radius: 0px 15px 15px 0px;
+    }
+
+    .registration {
+        width: 1300px;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .r-box {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .r-box1 {
+        display: flex;
+        flex-direction: column;
+        width: 59%;
+        height: 710px;
+        justify-content: space-between;
+    }
+
+    .r-box2 {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        height: 560px;
+        justify-content: space-between;
+    }
+
+    .r-box1-1 {
+        width: 100%;
+        height: 400px;
+        box-shadow: 2px 2px 2px 2px gray;
+        border-radius: 8px;
+    }
+
+    .r-box1-2 {
+        width: 100%;
+        height: 300px;
+        box-shadow: 2px 2px 2px 2px gray;
+        border-radius: 8px;
+    }
+
+    .r-box2-1 {
+        width: 100%;
+        height: 300px;
+        box-shadow: 2px 2px 2px 2px gray;
+        border-radius: 8px;
+    }
+    .r-box2-2 {
+        width: 100%;
+        height: 200px;
+        box-shadow: 2px 2px 2px 2px gray;
+        border-radius: 8px;
+    }
+
+    .r-box2 button {
+        background-color: #3262DC;
+        border: none;
+        padding: 10px 20px 10px 20px;
+        font-size: 18px;
+        color: white;
+        font-family: Pretendard;
+        font-weight: 500;
+        border-radius: 8px;
+        margin-left: 5px;
+    }
 </style>
 </head>
 <body>
@@ -33,7 +159,7 @@
                         <p>스포츠센터</p>
                     </div>
                 </div>
-                <div class="sidebar-login">
+                <div class="sidebar-login" onclick="location.href='login.html'">
                     <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="22.5" cy="22.5" r="22.5" fill="#D9D9D9"/>
                         <path d="M23 11C24.4587 11 25.8576 11.5795 26.8891 12.6109C27.9205 13.6424 28.5 15.0413 28.5 16.5C28.5 17.9587 27.9205 19.3576 26.8891 20.3891C25.8576 21.4205 24.4587 22 23 22C21.5413 22 20.1424 21.4205 19.1109 20.3891C18.0795 19.3576 17.5 17.9587 17.5 16.5C17.5 15.0413 18.0795 13.6424 19.1109 12.6109C20.1424 11.5795 21.5413 11 23 11ZM23 24.75C29.0775 24.75 34 27.2112 34 30.25V33H12V30.25C12 27.2112 16.9225 24.75 23 24.75Z" fill="#5A5A5A"/>
@@ -42,9 +168,53 @@
                 </div>
                 <div class="sidebar-menu">
                     <p onclick="location.href='health-guide.html'">운동방법</p>
-                    <p onclick="location.href='registration.html'">정기결제</p>
+                    <p onclick="location.href='registration.html'">마이페이지</p>
                     <p onclick="location.href='faq.html'">고객문의</p>
                     <p onclick="location.href='notice.html'">공지사항</p>
+                </div>
+            </div>
+        </div>
+        <div class="profile-top">
+            <div class="user-profile-main">
+                <svg width="193" height="193" viewBox="0 0 193 193" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="96.5" cy="96.5" r="96.5" fill="#D0D5EC"/>
+                    <path d="M98.5 47C104.799 47 110.84 49.5022 115.294 53.9562C119.748 58.4102 122.25 64.4511 122.25 70.75C122.25 77.0489 119.748 83.0898 115.294 87.5438C110.84 91.9978 104.799 94.5 98.5 94.5C92.2011 94.5 86.1602 91.9978 81.7062 87.5438C77.2522 83.0898 74.75 77.0489 74.75 70.75C74.75 64.4511 77.2522 58.4102 81.7062 53.9562C86.1602 49.5022 92.2011 47 98.5 47ZM98.5 106.375C124.744 106.375 146 117.003 146 130.125V142H51V130.125C51 117.003 72.2562 106.375 98.5 106.375Z" fill="#605F77"/>
+                </svg>                                      
+                <div>
+                    <p>유저이름</p>
+                    <span>정기결제 월수</span>
+                </div>
+            </div>
+        </div>
+        <div class="locker1">
+            <div class="locker-password">
+                <p>사물함</p>
+                <span>고객님의 사물함 비밀번호입니다.</span>
+                <input type="password" placeholder="1234" readonly>
+            </div>
+            <div class="locker-in">
+                
+            </div>
+        </div>
+        <div class="registration">
+            <h2>정기 회원 등록 및 업데이트</h2>
+            <div class="r-box">
+                <div class="r-box1">
+                    <div class="r-box1-1">
+                        <p>개월 수 선택</p>
+                    </div>
+                    <div class="r-box1-2">
+                        <p>쿠폰 등록/할인</p>
+                    </div>
+                </div>
+                <div class="r-box2">
+                    <div class="r-box2-1">
+                        <p>총 금액</p>
+                    </div>
+                    <div class="r-box2-2">
+                        <p>결제 방법</p>
+                    </div>
+                    <button>정기 회원 등록</button>
                 </div>
             </div>
         </div>
