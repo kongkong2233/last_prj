@@ -28,7 +28,7 @@
     }
 
     .user-profile-main span {
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 500;
         margin-left: 110px;
     }
@@ -64,7 +64,7 @@
     .locker-in {
         width: 900px;
         height: auto;
-        background-color: silver;
+        background-color: #D8DAE5;
         border-radius: 0px 15px 15px 0px;
     }
 
@@ -92,33 +92,33 @@
         display: flex;
         flex-direction: column;
         width: 40%;
-        height: 560px;
+        height: 500px;
         justify-content: space-between;
     }
 
     .r-box1-1 {
         width: 100%;
-        height: 400px;
+        height: 530px;
         box-shadow: 2px 2px 2px 2px gray;
         border-radius: 8px;
     }
 
     .r-box1-2 {
         width: 100%;
-        height: 300px;
+        height: 170px;
         box-shadow: 2px 2px 2px 2px gray;
         border-radius: 8px;
     }
 
     .r-box2-1 {
         width: 100%;
-        height: 300px;
+        height: 200px;
         box-shadow: 2px 2px 2px 2px gray;
         border-radius: 8px;
     }
     .r-box2-2 {
         width: 100%;
-        height: 200px;
+        height: 240px;
         box-shadow: 2px 2px 2px 2px gray;
         border-radius: 8px;
     }
@@ -133,6 +133,71 @@
         font-weight: 500;
         border-radius: 8px;
         margin-left: 5px;
+    }
+
+    .r-box h3 {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .select-box {
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
+    }
+
+    .select-box div {
+        height: 38px;
+    }
+
+    .r-box1-2 input {
+        margin-left: 20px;
+        margin-top: 10px;
+        width: 90%;
+        padding: 5px 10px 5px 10px;
+        border-radius: 8px;
+        border: solid 1px black;
+        font-family: Pretendard;
+    }
+
+    .r-box1-2 button {
+        float: right;
+        margin-top: 20px;
+        margin-right: 35px;
+        border-radius: 8px;
+        border: none;
+        background-color: #3262DC;
+        color: white;
+        font-family: Pretendard;
+        padding: 5px 20px 5px 20px;
+    }
+
+    .pay-box {
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid 1px #D8DAE5;
+    }
+
+    .pay-box div {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-bottom: 10px;
+    }
+
+    .total-pay-box {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-top: 20px;
+    }
+
+    .total-pay-box .pay-text1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #3262DC;
     }
 </style>
 </head>
@@ -180,17 +245,16 @@
                     <circle cx="96.5" cy="96.5" r="96.5" fill="#D0D5EC"/>
                     <path d="M98.5 47C104.799 47 110.84 49.5022 115.294 53.9562C119.748 58.4102 122.25 64.4511 122.25 70.75C122.25 77.0489 119.748 83.0898 115.294 87.5438C110.84 91.9978 104.799 94.5 98.5 94.5C92.2011 94.5 86.1602 91.9978 81.7062 87.5438C77.2522 83.0898 74.75 77.0489 74.75 70.75C74.75 64.4511 77.2522 58.4102 81.7062 53.9562C86.1602 49.5022 92.2011 47 98.5 47ZM98.5 106.375C124.744 106.375 146 117.003 146 130.125V142H51V130.125C51 117.003 72.2562 106.375 98.5 106.375Z" fill="#605F77"/>
                 </svg>                                      
-                <div>
+                <div id="userInfo">
                     <p>유저이름</p>
-                    <span>정기결제 월수</span>
+                    <span>정기결제 마감일</span>
                 </div>
             </div>
         </div>
         <div class="locker1">
             <div class="locker-password">
                 <p>사물함</p>
-                <span>고객님의 사물함 비밀번호입니다.</span>
-                <input type="password" placeholder="1234" readonly>
+                <div id="userInfo2"></div>
             </div>
             <div class="locker-in">
                 
@@ -201,18 +265,48 @@
             <div class="r-box">
                 <div class="r-box1">
                     <div class="r-box1-1">
-                        <p>개월 수 선택</p>
+                        <h3>기간 선택</h3>
+                        <div class="select-box">
+                            <div><input type="radio" name="chk_info" value="1"> 1개월 - 10000원</div>
+                            <div><input type="radio" name="chk_info" value="2"> 2개월 - 20000원</div>
+                            <div><input type="radio" name="chk_info" value="3"> 3개월 - 29000원 (1천원할인)</div>
+                            <div><input type="radio" name="chk_info" value="4"> 4개월 - 39000원</div>
+                            <div><input type="radio" name="chk_info" value="5"> 5개월 - 49000원</div>
+                            <div><input type="radio" name="chk_info" value="6"> 6개월 - 58000원 (1천원할인)</div>
+                            <div><input type="radio" name="chk_info" value="7"> 7개월 - 68000원</div>
+                            <div><input type="radio" name="chk_info" value="8"> 8개월 - 78000원</div>
+                            <div><input type="radio" name="chk_info" value="9"> 9개월 - 87000원 (1천원할인)</div>
+                            <div><input type="radio" name="chk_info" value="10"> 10개월 - 97000원</div>
+                            <div><input type="radio" name="chk_info" value="11"> 11개월 - 107000원</div>
+                            <div><input type="radio" name="chk_info" value="12"> 12개월 - 116000원 (1천원할인)</div>
+                        </div>
                     </div>
                     <div class="r-box1-2">
-                        <p>쿠폰 등록/할인</p>
+                        <h3>쿠폰 등록</h3>
+                        <input type="text" placeholder="쿠폰 번호를 입력해주세요." id="couponCode">
+                        <button id="applyCoupon">쿠폰 적용</button>
                     </div>
                 </div>
                 <div class="r-box2">
                     <div class="r-box2-1">
-                        <p>총 금액</p>
+                        <h3>결제 금액</h3>
+                        <div class="pay-box">
+                            <div>
+                                <span>정기결제 금액</span>
+                                <span id="selectedPlan">0원</span>
+                            </div>
+                            <div>
+                                <span>할인 금액</span>
+                                <span id="selectedPlan2">0원</span>
+                            </div>
+                        </div>
+                        <div class="total-pay-box">
+                            <span>총 결제금액</span>
+                            <span class="pay-text1" id="selectedPlan3">0원</span>
+                        </div>
                     </div>
                     <div class="r-box2-2">
-                        <p>결제 방법</p>
+                        <h3>결제 수단</h3>
                     </div>
                     <button>정기 회원 등록</button>
                 </div>
@@ -220,4 +314,88 @@
         </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const currentUser = sessionStorage.getItem("currentUser");
+
+        if (currentUser) {
+            const userInfo = JSON.parse(currentUser);
+
+            const userInfoDiv1 = document.getElementById('userInfo');
+            const userInfoDiv2 = document.getElementById('userInfo2');
+
+            const currentDate = new Date();
+            const lastDate = new Date(userInfo.lastDate);
+            const timeDiff = lastDate.getTime() - currentDate.getTime();
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            const dDayMessage = daysDiff >= 0 ? `만료일까지 D-${daysDiff}` : '정기결제등록이 되어있지 않습니다.';
+
+            let lockerMessage = '';
+
+            if (userInfo.isLocker === "-1") {
+                lockerMessage = '사물함이 등록되어 있지 않습니다.';
+            } else {
+                lockerMessage = `고객님의 사물함 비밀번호는 ${userInfo.isLocker}입니다.`;
+            }
+
+            userInfoDiv1.innerHTML = `
+                <p>${userInfo.userNm}</p>
+                <span>정기결제 마감일 ${userInfo.lastDate} / ${dDayMessage}</span>
+            `;
+
+            userInfoDiv2.innerHTML = `
+                <span>${lockerMessage}</span>
+            `
+        } else {
+            console.log("사용자 정보 없음");
+        }
+
+        function updatePrice(selectedMonths, couponCode) {
+            const pricePerMonth = 10000;
+            const discountPerMonth = 1000;
+
+            const totalDiscount = Math.floor(selectedMonths / 3) * discountPerMonth;
+
+            const couponDiscountRate = validateCoupon(couponCode) ? 0.2 : 0;
+            const couponDiscount = selectedMonths * pricePerMonth * couponDiscountRate;
+
+            const noCouponAmount = selectedMonths * pricePerMonth - totalDiscount;
+            const totalAmount = selectedMonths * pricePerMonth - totalDiscount - couponDiscount;
+
+            const selectedPlanDiv = document.getElementById('selectedPlan');
+            const selectedPlanDiv2 = document.getElementById('selectedPlan2');
+            const selectedPlanDiv3 = document.getElementById('selectedPlan3');
+            selectedPlanDiv.innerHTML = `<span>${noCouponAmount}원</span>`;
+            selectedPlanDiv2.innerHTML = `<span>-${couponDiscount}원</span>`;
+            selectedPlanDiv3.innerHTML = `<span>${totalAmount}원</span>`;
+        }
+
+        function validateCoupon(couponCode) {
+            return couponCode === "12345678"
+        }
+
+        const radioButtons = document.querySelectorAll('input[name="chk_info"]');
+        radioButtons.forEach(button => {
+            button.addEventListener('change', function () {
+                const selectedMonths = parseInt(this.value, 10);
+                const couponCode = document.getElementById('couponCode').value;
+
+                updatePrice(selectedMonths, couponCode);
+            });
+        });
+
+        const applyCouponButton = document.getElementById('applyCoupon');
+        applyCouponButton.addEventListener('click', function () {
+            const selectedMonths = parseInt(document.querySelector('input[name="chk_info"]:checked').value, 10);
+
+            const couponCode = document.getElementById('couponCode').value;
+
+            const couponMessage = validateCoupon(couponCode) ? '쿠폰이 적용되었습니다.' : '유효하지 않은 쿠폰 코드입니다.';
+            alert(couponMessage);
+
+            updatePrice(selectedMonths, couponCode);
+        });
+    });
+</script>
 </html>
