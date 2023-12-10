@@ -120,8 +120,9 @@
                 const user = users.find(u => u.userId === enteredUsername && u.password === enteredPassword);
 
                 if (user) {
+                    sessionStorage.setItem("currentUser", JSON.stringify(user));
                     alert("로그인되었습니다.");
-                    window.location.href = "main.html";
+                    window.location.href = "registration.html";
                 } else {
                     alert("로그인 실패. 아이디 또는 비밀번호를 확인하세요.")
                 }
