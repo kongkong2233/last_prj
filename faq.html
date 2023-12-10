@@ -48,32 +48,96 @@
                     <p onclick="location.href='notice.html'">공지사항</p>
                 </div>
             </div>
-        </div>
-        <div class="faq-box">
+        </div>       
+         
+        <div class="notice">
             <h2>FAQ</h2>
             <div class="faq-in-topbox">
                 <p style="flex-basis: 10%;">번호</p>
-                <p style="flex-basis: 70%;">제목</p>
-                <p style="flex-basis: 20%;">등록일자</p>
+                <p style="flex-basis: 10%;">분류</p>
+                <p style="flex-basis: 80%;">제목</p>                
             </div>
             <div class="faq-in-box">
-                <div class="faq-q">
-                    <p style="flex-basis: 10%;">1</p>
-                    <p style="flex-basis: 70%;">질문입니다.</p>
-                    <p style="flex-basis: 20%;">2023-12-09</p>
+
+                <div class="faq-q" id="que-4">
+                    <p style="flex-basis: 10%;">4</p>
+                    <p style="flex-basis: 10%;">운동 강습</p>
+                    <p style="flex-basis: 80%;"><a href="#">신규회원 OT 강습</a></p>                    
                 </div>
-                <div class="faq-q">
-                    <p style="flex-basis: 10%;">1</p>
-                    <p style="flex-basis: 70%;">질문입니다.</p>
-                    <p style="flex-basis: 20%;">2023-12-09</p>
+                <div class="answer" id="ans-4">
+                    <b>- 강습일시 : 매월 1일 ~ 5일 <br><br>
+                        - 강습내용 : 기본 헬스기구 사용방법 강습<br><br>
+                        - 강습구성</b><br>
+                        &nbsp;ㅇ 1일차 : 가슴운동 2종, 런닝머신<br>
+                        &nbsp;ㅇ 2일차 : 등운동 2종, 자전거  <br>
+                        &nbsp;ㅇ 3일차 : 팔운동 2종 <br>
+                        &nbsp;ㅇ 4일차 : 다리운동 4종 <br>
+                        &nbsp;ㅇ 5일차 : 복근운동 2종 <br>
                 </div>
-                <div class="faq-q">
-                    <p style="flex-basis: 10%;">1</p>
-                    <p style="flex-basis: 70%;">질문입니다.</p>
-                    <p style="flex-basis: 20%;">2023-12-09</p>
+
+                <div class="faq-q" id="que-3">
+                    <p style="flex-basis: 10%;">3</p>
+                    <p style="flex-basis: 10%;">시설 이용</p>
+                    <p style="flex-basis: 80%;"><a href="#">회원증 분실 시 재발급 절차</a></p>                    
                 </div>
+                <div class="answer" id="ans-3">
+                    &nbsp;1. 안내데스크에 회원증 분실을 신고합니다.<br>
+                    &nbsp;2. 회원증 재발급을 신청합니다. (당일 발급 가능) <br>
+                </div>
+
+                <div class="faq-q" id="que-2">
+                    <p style="flex-basis: 10%;">2</p>
+                    <p style="flex-basis: 10%;">시설 이용</p>
+                    <p style="flex-basis: 80%;"><a href="#">스포츠센터 주차요금 기준</a></p>                    
+                </div>
+                <div class="answer" id="ans-2">
+                    <b>- 스포츠센터 주차장은 유료입니다. <br><br>
+                    - 연중무휴 24시간 운영합니다.<br><br>
+                    - 요금체계</b><br>
+                    &nbsp;ㅇ 입차후 2시간무료<br>
+                    &nbsp;ㅇ 10분당 300원 부과  <br>
+                    &nbsp;ㅇ 단, 스포츠센터 정기회원 및 일일회원에 한하여 1시간 추가할인됩니다. <br>
+                </div>
+                
+                <div class="faq-q" id="que-1">
+                    <p style="flex-basis: 10%;">1</p>
+                    <p style="flex-basis: 10%;">시설 이용</p>
+                    <p style="flex-basis: 80%;"><a href="#">스포츠센터 이용시간</a></p>                    
+                </div>
+                <div class="answer" id="ans-1">
+                    <b>- 운영시간</b><br>
+                      &nbsp; 평  일 : 06:00~22:00 (자유이용)<br>
+                      &nbsp; 토요일 : 07:00~18:00 (자유이용)<br>
+                      &nbsp; 공휴일 : 10:00~18:00 (자유이용)<br>
+                      &nbsp; 정기휴관 : 매주 일요일<br>
+                </div>
+
+                <div class="faq-q"></div>
             </div>
         </div>
+
+        <script>
+            const items = document.querySelectorAll('.faq-q');
+          
+            function openCloseAnswer() {
+              const answerId = this.id.replace('que', 'ans');
+          
+              if(document.getElementById(answerId).style.display == 'block') {
+                document.getElementById(answerId).style.display = 'none';
+              } 
+              else {
+
+                for(var j = 1; j < items.length; j++)       
+                    document.getElementById( 'ans-'+ j.toString() ).style.display = 'none';
+                           
+                document.getElementById(answerId).style.display = 'block';
+              }
+            }
+          
+            items.forEach(item => item.addEventListener('click', openCloseAnswer));
+        </script>
+
     </div>
+    <br><br>
 </body>
 </html>
