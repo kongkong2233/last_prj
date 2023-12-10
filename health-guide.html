@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이벤트</title>
     <link href="topside.css" rel="stylesheet" type="text/css">
+    <link href="board.css" rel="stylesheet" type="text/css">
     <script src="./sidebar.js"></script>
 <style>
-    h2 {
-        margin-left: 160px;
-    }
+
 
     .guide-box1 {
-        width: 1595px;
-        height: 842px;
+        position:relative;
+        width: 100%;
+        height: 500px;
         margin: 0 auto;
         background-color: #EAEBF6;
         border-radius: 20px;
@@ -23,8 +23,9 @@
     }
 
     .guide-box2 {
-        width: 1595px;
-        height: 842px;
+        position:relative;
+        width: 100%;
+        height: 90%;
         margin: 0 auto;
         background-color: #EAEBF6;
         border-radius: 20px;
@@ -33,12 +34,16 @@
         box-shadow: 2px 2px 2px 2px gray;
     }
 
-    .box1 {
-        width: 50%;
-    }
+    .guide-box1 .box1 {width: 75%;}
+    .guide-box2 .box1 {width: 75%;}
 
-    .box2 {
-        width: 50%;
+    .guide-box1 .box1 .cont{ display:none; }
+    .guide-box1 .box1 .cont.active{ display:block; }
+    .guide-box2 .box1 .cont{ display:none; }
+    
+    .guide-box1 .box2 {
+        overflow:hidden;
+        width: 25%;
         height: 100%;
         background-color: white;
         border-radius: 0px 20px 20px 0px;
@@ -47,16 +52,26 @@
         flex-grow: 1;
     }
 
-    .menu1 {
+    .guide-box1 .box2 .menu1 {
         width: 100%;
         height: 100%;
         border-bottom: solid 1px #C9CBDD;
     }
 
-    .menu2 {
+    .guide-box1 .box2 .menu2 {
         width: 100%;
         height: 100%;
     }
+    
+    .guide-box1 .box2 .menu1 ul.is_on .btn{font-weight:bold; }
+    .guide-box1 .box2 .menu1 ul       .btn{font-weight:normal; }
+    .guide-box1 .box2 .menu1         .btn{font-weight:normal; }
+
+    .guide-box2 .box2 .menu1 li.is_on .btn{font-weight:bold; }
+    .guide-box2 .box2 .menu1         .btn{font-weight:normal; }
+
+    .tbl-td1 {width:25%;text-align:top;padding-left:10px;}
+    .tbl-td2 {width:75%;text-align:top;vertical-align: top;}
 </style>
 </head>
 <body>
@@ -97,50 +112,208 @@
                 </div>
             </div>
         </div>
-        <div class="health-guide1">
-            <h2>운동 기구 사용 방법</h2>
+
+        <div class="notice">
+            <div><h2>&nbsp;운동기구 사용방법</h2></div>
             <div class="guide-box1">
                 <div class="box1">
 
-                </div>
-                <div class="box2">
-                    <div class="menu1">
-                        <p>운동기구1</p>
+                    <div id="tab1" class="cont active">
+                        <h3><p style="width:100%;text-align:center;margin-bottom:10px;margin-top:10px;">
+                            <b>[ 숄더 프레스 운동방법 ]</b></p></h3>
+                        <table><tr>
+                        <td class="tbl-td1">
+                            <img src="./images/숄더프레스.png" style="width:90%;"> 
+                        </td>
+                        <td class="tbl-td2"><b>
+                        - 운동부위 : 어깨 전면 삼각근과 회전근개<br><br>
+                        - 운동횟수 : 한 세트당 12~15회, 3~5 세트<br><br>
+                        - 운동방법 <br></b>
+                          &nbsp; 1. 자신 근력에 맞는 무게 추를 조정한다.<br>
+                          &nbsp; 2. 팔꿈치가 수직이 되게 만들어주고 올릴 때 숨을 내쉬고 내릴 때들이 마셔준다.<br>
+                          &nbsp; 3. 허리 또는 등이 말리지 않게 주의해야 한다.<br>
+                        </td></tr></table>
                     </div>
-                    <div class="menu1">
-                        <p>운동기구1</p>
-                    </div>
-                    <div class="menu2">
-                        <p>운동기구1</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="health-guide2">
-            <h2>신체 부위 별 추천 운동</h2>
-            <div class="guide-box2">
-                <div class="box1">
 
+                    <div id="tab2" class="cont">
+                        <h3><p style="width:100%;text-align:center;margin-bottom:10px;margin-top:10px;">
+                            <b>[ 랫풀 다운 운동방법 ]</b></p></h3>
+                        <table><tr>
+                        <td class="tbl-td1">
+                            <img src="./images/랫풀 다운.png" style="width:95%;"> 
+                        </td>
+                        <td class="tbl-td2"><b>
+                        - 운동부위 : 등근육과 이두근<br><br>
+                        - 운동횟수 : 한 세트당 12~15회, 3~5 세트<br><br>
+                        - 운동방법 <br></b>
+                          &nbsp; 1. 자신 근력에 맞는 무게 추를 조정한다.<br>
+                          &nbsp; 2. 밑으로 당길 때 호흡을 내쉬고, 올려줄 때 호흡을 들이 마십니다.<br>
+                          &nbsp; 3. 허리가 앞으로 말리지 않게 주의하며 가슴을 벌려주고 고개를 들어줍니다.<br>
+                        </td></tr></table>
+                    </div>
+
+                    <div id="tab3" class="cont">
+                        <h3><p style="width:100%;text-align:center;margin-bottom:10px;margin-top:10px;">
+                            <b>[ 레그 프레스 운동방법 ]</b></p></h3>
+                        <table><tr>
+                        <td class="tbl-td1">
+                            <img src="./images/레그 프레스.png" style="width:95%;"> 
+                        </td>
+                        <td class="tbl-td2"><b>
+                        - 운동부위 : 대퇴사 두근(허벅지 앞),둔근(엉덩이),햄스트링(허벅지 뒤)<br><br>
+                        - 운동횟수 : 한 세트당 15회 이상, 3~5 세트<br><br>
+                        - 운동방법 <br></b>
+                          &nbsp; 1. 자신 근력에 맞는 바벨 무게를 조정한다.<br>
+                          &nbsp; 2. 상체와 엉덩이를 머신에 밀착 고정한다.<br>
+                          &nbsp; 3. 발은 어깨너비 또는 조금 더 넓게 위치한다.<br>
+                          &nbsp; 4. 발꿈치에 힘을 주어 밀고 호흡을 내뱉는다.<br>
+                          &nbsp; &nbsp;    (무릎을 완전히 펴지않아야한다. 부상위험)<br>
+                          &nbsp; 5. 신전될 때는 숨을 마시며 다리가 90도 될 때 까지 구부린다.<br>
+                        </td></tr></table>
+                    </div>
                 </div>
                 <div class="box2">
                     <div class="menu1">
-                        <p>운동1</p>
+                        <ul class="is_on">
+                            <a class="btn"  href="#tab1">[ 숄더 프레스 사용방법 ]                             
+                            <img src="./images/click.png" style="width:15px">
+                            <img src="./images/숄더프레스.png" style="width:30%;padding-left:35px;"> </a> 
+                        </ul>
                     </div>
                     <div class="menu1">
-                        <p>운동1</p>
+                        <ul >
+                            <a class="btn"  href="#tab2">[ 랫풀 다운 사용방법 ]                             
+                                <img src="./images/click.png" style="width:15px">
+                                <img src="./images/랫풀 다운.png" style="width:40%;padding-left:35px;"> </a> 
+                        </ul>
                     </div>
                     <div class="menu1">
-                        <p>운동1</p>
-                    </div>
-                    <div class="menu1">
-                        <p>운동1</p>
-                    </div>
-                    <div class="menu2">
-                        <p>운동1</p>
+                        <ul >
+                            <a class="btn"  href="#tab3">[ 레그 프레스 사용방법 ]                             
+                                <img src="./images/click.png" style="width:15px">
+                                <img src="./images/레그 프레스.png" style="width:50%;padding-left:35px;"> </a> 
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+
+        
+        <div class="notice">
+            <div><h2>&nbsp;신체부위별 추천 운동</h2></div>
+            <div class="guide-box1">
+                <div class="box1">
+                    <div id="tab4" class="cont active">
+                        <h3><p style="width:100%;text-align:center;margin-bottom:10px;margin-top:10px;">
+                            <b>[ 하이퍼 익스텐션 운동방법 ]</b></p></h3>
+                        <table><tr>
+                        <td class="tbl-td1">
+                            <img src="./images/하이퍼 익스텐션.png" style="width:90%;"> 
+                        </td>
+                        <td class="tbl-td2"><b>
+                        - 운동부위 : 등근육과 뒤허벅지<br><br>
+                        - 운동횟수 : 한 세트당 15~20회, 5 세트<br><br>
+                        - 운동방법 <br></b>
+                          &nbsp; 1. 밑 부분 발패드에 발목을 걸고 허벅지가 윗부분 패드에 닿도록 합니다.<br>
+                          &nbsp; 2. 자신의 골반 아래쪽에 윗부분 패드가 오도록 높낮이를 조절해준다.<br>
+                          &nbsp; 3. 팔을 X자 모양으로 겹쳐 가슴에 붙이고 허리를 일자로 펴준다.<br>
+                          &nbsp; 4. 천천히 허리를 앞으로 굽힙니다. 이때 등은 계속 일자상태로 유지해준다.<br>
+                          &nbsp; 5. 다시 천천히 올라오면서 허리가 휘어지지 않도록 주의한다.<br>
+                        </td></tr></table>
+                    </div>
+                    <div id="tab5" class="cont">
+                        <h3><p style="width:100%;text-align:center;margin-bottom:10px;margin-top:10px;">
+                            <b>[ 체스트 프레스 운동방법 ]</b></p></h3>
+                        <table><tr>
+                        <td class="tbl-td1">
+                            <img src="./images/체스트 프레스.png" style="width:95%;"> 
+                        </td>
+                        <td class="tbl-td2"><b>
+                        - 운동부위 : 가슴근육, 팔뚝살 슬림하게~<br><br>
+                        - 운동횟수 : 한 세트당 10~12회, 3~4 세트<br><br>
+                        - 운동방법 <br></b>
+                          &nbsp; 1. 자신에게 맞는 무게를 설정한다.<br>
+                          &nbsp; 2. 팔 힘으로 핸들을 밀어낼 때 호흡을 내쉬고, 팔을 내릴 때 호흡을 들이 마십니다.<br>
+                          &nbsp; 3. 10~12개 실시 후, 30~40초 쉬어 줍니다.<br>
+                          &nbsp; 4. 위 내용을 3~4 세트 반복해 줍니다.<br>
+                        </td></tr></table>
+                    </div>
+                    <div id="tab6" class="cont">
+                        <h3><p style="width:100%;text-align:center;margin-bottom:10px;margin-top:10px;">
+                            <b>[ 힙 어브 덕터 운동방법 ]</b></p></h3>
+                        <table><tr>
+                        <td class="tbl-td1">
+                            <img src="./images/힙 어브 덕터.png" style="width:95%;"> 
+                        </td>
+                        <td class="tbl-td2"><b>
+                        - 운동부위 : 측명 엉덩이 근육(중둔근,소둔근), 애플힙<br><br>
+                        - 운동횟수 : 한 세트당 15회, 3~5 세트<br><br>
+                        - 운동방법 <br></b>
+                          &nbsp; 1. 다리를 벌리고 앉아 핸들을 잡고 패드에 등을 고정해주세요.<br>
+                          &nbsp; 2. 몸통이 흔들리지 않도록 코어(복횡근, 횡경막근, 다열근, 골반저근)에<br>
+                          &nbsp;&nbsp;&nbsp;&nbsp; 힘을 주고 다리를 안쪽으로 모아줍니다.<br>
+                          &nbsp; 3. 위 내용을 15회, 3~5 세트 반복해 줍니다.<br>
+                        </td></tr></table>
+                    </div>
+                </div>
+                <div class="box2">
+                    <div class="menu1">
+                        <ul class="is_on">
+                            <a class="btn"  href="#tab4">[ 등근육,뒤허벅지 운동방법 ]                             
+                            <img src="./images/click.png" style="width:15px">
+                            <img src="./images/하이퍼 익스텐션2.png" style="width:35%;padding-left:35px;"> </a> 
+                        </ul>
+                    </div>
+                    <div class="menu1">
+                        <ul >
+                            <a class="btn"  href="#tab5">[ 가슴근육,팔뚝살 운동방법 ]                             
+                                <img src="./images/click.png" style="width:15px">
+                                <img src="./images/체스트 프레스2.png" style="width:35%;padding-left:35px;"> </a> 
+                        </ul>
+                    </div>
+                    <div class="menu1">
+                        <ul >
+                            <a class="btn"  href="#tab6">[ 애플힙 운동방법 ]                             
+                                <img src="./images/click.png" style="width:15px">
+                                <img src="./images/힙 어브 덕터2.png" style="width:35%;padding-left:35px;"> </a> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const tabList  = document.querySelectorAll('.guide-box1 .box2 .menu1 ul');
+            const contents = document.querySelectorAll('.guide-box1 .box1 .cont')
+            let activeCont = ''; // 현재 활성화 된 컨텐츠 (기본:#tab1 활성화)
+          
+            for(var i = 0; i < tabList.length; i++){
+                tabList[i].querySelector('.btn').addEventListener('click', function(e)  {
+                e.preventDefault();
+
+                for(var j = 0; j < tabList.length; j++){                  
+                  tabList[j].classList.remove('is_on');  // 나머지 버튼 클래스 제거                          
+                  contents[j].style.display = 'none';    // 나머지 컨텐츠 display:none 처리
+                }
+                          
+                this.parentNode.classList.add('is_on');  // 버튼 관련 이벤트                   
+                activeCont = this.getAttribute('href');  // 버튼 클릭시 컨텐츠 전환
+                document.querySelector(activeCont).style.display = 'block';
+
+                if (activeCont == "#tab1" || activeCont == "#tab2" || activeCont == "#tab3") {
+                  tabList[3].classList.add('is_on');     // 나머지 버튼 클래스 제거                          
+                  contents[3].style.display = 'block';   // 나머지 컨텐츠 display:none 처리
+                }
+                else {
+                  tabList[0].classList.add('is_on');     // 나머지 버튼 클래스 제거                          
+                  contents[0].style.display = 'block';   // 나머지 컨텐츠 display:none 처리
+                }
+
+              });
+            }
+          </script>
+
+        
     </div>
 </body>
 </html>
