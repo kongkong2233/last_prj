@@ -79,3 +79,7 @@ body {
 .sidebar-menu p {
     cursor: pointer;
 }
+
+.select div {
+    cursor: pointer;
+}

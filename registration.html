@@ -397,5 +397,23 @@
             updatePrice(selectedMonths, couponCode);
         });
     });
+
+    function getLoggedInUser() {
+            const userInfo = sessionStorage.getItem('currentUser');
+            return userInfo ? JSON.parse(userInfo) : null;
+        }
+
+        function checkLoginStatus() {
+            const currentUser = getLoggedInUser();
+
+            if (!currentUser) {
+                alert('로그인 후 이용 가능합니다.')
+                window.location.href = 'login.html';
+            } else {
+                console.log('로그인된 사용자: ', currentUser);
+            }
+    }
+
+    document.addEventListener('DOMContentLoaded', checkLoginStatus);
 </script>
 </html>
