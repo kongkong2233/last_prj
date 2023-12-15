@@ -3,12 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이벤트</title>
+    <title>상명대학교 천안캠퍼스 스포츠센터</title>
     <link href="topside.css" rel="stylesheet" type="text/css">
     <link href="board.css" rel="stylesheet" type="text/css">
     <script src="./sidebar.js"></script>
 <style>
+    .intro-box1 {
+        display: flex;
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 60px;
+    }
 
+    .box1 {
+        width: 300px;
+        height: 300px;
+        border-radius: 20px;
+        background-color: silver;
+        box-shadow: 2px 2px 2px 2px #A8ACBC;
+    }
+
+    .text1 {
+        font-size: 18px;
+        margin-left: 250px;
+    }
+
+    h1 {
+        margin-left: 25%;
+    }
 </style>
 </head>
 <body>
@@ -46,30 +68,29 @@
                     <p onclick="location.href='registration.html'">마이페이지</p>
                     <p onclick="location.href='faq.html'">고객문의</p>
                     <p onclick="location.href='notice.html'">공지사항</p>
-                    <p onclick="location.href='trainer.html'">트레이너 소개</p>
                 </div>
             </div>
         </div>
-        <div class="notice">
-            <h2>공지사항</h2>
-            <div class="faq-in-box">
-                <div class="faq-q"></div>
-
-                <div class="faq-q">
-                    <p style="flex-basis: 10%;">제목</p>
-                    <p style="flex-basis: 60%;">[안내] 연말 인사</p>
-                    <p style="flex-basis: 10%;">등록일자</p>
-                    <p style="flex-basis: 20%;">2023-12-30</p>
-                </div>
-
-                <div class="faq-q">
-                    <p style="flex-basis: 100%;"><img  class="img_size1"  src="./images/안내7.png"></p>
-                </div>
+        <h1>트레이너 소개</h1>
+        <div class="intro-box1">
+            <img src="images/trainer1.png" class="box1">
+            <div class="text1">
+                <p>지유빈</p>
+                <p>/소프트웨어학과</p>
+                </br>
+                <p>총괄 및 화면 디자인을 맡았고</p>
+                <p>세부적으로는 메인화면, 개인 페이지 등을 담당하였습니다.</p>
             </div>
-            <div >			
-                <p style="flex-basis: 100%; text-align:center;"><button style="width:85px" onclick="location.href='notice.html' "> 목록 보기 </button> </p> 
+        </div>
+        <div class="intro-box1">
+            <img src="images/trainer2.png" class="box1">
+            <div class="text1">
+                <p>차민희</p>
+                <p>/소프트웨어학과</p>
+                </br>
+                <p>메인화면, 운동 소개 페이지,</p>
+                <p>게시판 형태와 관련된 공지사항 및 FAQ 등을 담당하였습니다.</p>
             </div>
-            
         </div>
     </div>
 </body>
