@@ -17,3 +17,19 @@ document.addEventListener('click', function(event) {
         sidebar.style.right = '-300px';
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const currentUser = sessionStorage.getItem("currentUser");
+
+    if (currentUser) {
+        const userInfo = JSON.parse(currentUser);
+    
+        const userInfoText = document.getElementById('userInfo');
+    
+        userInfoText.innerHTML = `
+            ${userInfo.userNm}
+        `
+    } else {
+        console.log("사용자 정보 없음");
+    }
+});
