@@ -199,6 +199,32 @@
         font-weight: bold;
         color: #3262DC;
     }
+
+    .radio-box1 {
+        margin-left: 20px;
+    }
+
+    .pay-box1, .pay-box2, .pay-box3 {
+        margin-left: 30px;
+    }
+
+    .pay-box3 input {
+        margin-top: 10px;
+        width: 90%;
+        padding: 5px 10px 5px 10px;
+        border-radius: 8px;
+        border: solid 1px black;
+        font-family: Pretendard;
+    }
+
+    .pay-box1 input {
+        margin-top: 10px;
+        width: 90%;
+        padding: 5px 10px 5px 10px;
+        border-radius: 8px;
+        border: solid 1px black;
+        font-family: Pretendard;
+    }
 </style>
 </head>
 <body>
@@ -246,7 +272,7 @@
                     <circle cx="96.5" cy="96.5" r="96.5" fill="#D0D5EC"/>
                     <path d="M98.5 47C104.799 47 110.84 49.5022 115.294 53.9562C119.748 58.4102 122.25 64.4511 122.25 70.75C122.25 77.0489 119.748 83.0898 115.294 87.5438C110.84 91.9978 104.799 94.5 98.5 94.5C92.2011 94.5 86.1602 91.9978 81.7062 87.5438C77.2522 83.0898 74.75 77.0489 74.75 70.75C74.75 64.4511 77.2522 58.4102 81.7062 53.9562C86.1602 49.5022 92.2011 47 98.5 47ZM98.5 106.375C124.744 106.375 146 117.003 146 130.125V142H51V130.125C51 117.003 72.2562 106.375 98.5 106.375Z" fill="#605F77"/>
                 </svg>                                      
-                <div id="userInfo">
+                <div id="userInfo-r">
                     <p>유저이름</p>
                     <span>정기결제 마감일</span>
                 </div>
@@ -308,8 +334,25 @@
                     </div>
                     <div class="r-box2-2">
                         <h3>결제 수단</h3>
+                        <div class="radio-box1">
+                            <input type="radio" name="chk_info2" value="card" onclick="showPaymentBox('pay-box1')" checked> 카드
+                            <input type="radio" name="chk_info2" value="pay" onclick="showPaymentBox('pay-box2')"> 현금
+                            <input type="radio" name="chk_info2" value="coupon" onclick="showPaymentBox('pay-box3')"> 쿠폰
+                        </div>
+                        <div class="pay-box1" id="pay-box1">
+                            <p>카드 결제</p>
+                            <input type="text" placeholder="카드 번호를 입력해주세요." id="cardNumber">
+                        </div>
+                        <div class="pay-box2" id="pay-box2">
+                            <p>현금 결제로 정기 결제 시</p>
+                            <p>매장에서 오프라인으로 확인 후 회원증을 받아가주세요.</p>
+                        </div>
+                        <div class="pay-box3" id="pay-box3">
+                            <p>쿠폰 결제</p>
+                            <input type="text" placeholder="결제 쿠폰을 입력해주세요." id="couponCode2">
+                        </div>
                     </div>
-                    <button>정기 회원 등록</button>
+                    <button onclick="validateAndRegister()">정기 회원 등록</button>
                 </div>
             </div>
         </div>
@@ -323,7 +366,7 @@
         if (currentUser) {
             const userInfo = JSON.parse(currentUser);
 
-            const userInfoDiv1 = document.getElementById('userInfo');
+            const userInfoDiv1 = document.getElementById('userInfo-r');
             const userInfoDiv2 = document.getElementById('userInfo2');
 
             const currentDate = new Date();
@@ -416,5 +459,104 @@
     }
 
     document.addEventListener('DOMContentLoaded', checkLoginStatus);
+
+    document.addEventListener('DOMContentLoaded', function () {
+        showPaymentBox('pay-box1');
+    });
+
+    function showPaymentBox(boxId) {
+        document.getElementById('pay-box1').style.display = 'none';
+        document.getElementById('pay-box2').style.display = 'none';
+        document.getElementById('pay-box3').style.display = 'none';
+
+        document.getElementById(boxId).style.display = 'block';
+    }
+
+    function validateAndRegister() {
+        const selectedPlan = document.querySelector('input[name="chk_info"]:checked');
+        const selectedPlanMonths = selectedPlan ? parseInt(selectedPlan.value, 10) : 0;
+        const paymentMethod = document.querySelector('input[name="chk_info2"]:checked').value;
+
+        if (paymentMethod === 'card') {
+            const cardNumber = document.getElementById('cardNumber').value;
+
+            if (cardNumber.length !== 16 || isNaN(cardNumber)) {
+                alert('올바른 카드 번호를 입력해주세요.');
+                return;
+            }
+        } else if (paymentMethod === 'coupon') {
+            const couponCode = document.getElementById('couponCode2').value;
+
+            if (couponCode !== "X-mas") {
+                alert('유효하지 않은 쿠폰입니다.');
+                return;
+            }
+        }
+
+        const registrationDate = new Date();
+        const selectedMonths = selectedPlanMonths;
+
+        registrationDate.setMonth(registrationDate.getMonth() + selectedMonths);
+
+        const year = registrationDate.getFullYear();
+        const month = String(registrationDate.getMonth() + 1).padStart(2, '0');
+        const day = String(registrationDate.getDate()).padStart(2, '0');
+        const nextBillingDate = `${year}-${month}-${day}`;
+
+        sessionStorage.setItem('nextBillingDate', nextBillingDate);
+
+        const currentUser = sessionStorage.getItem("currentUser");
+
+        updateUIWithNextBillingDate(nextBillingDate);
+
+        alert('정기 회원 등록이 완료되었습니다.');
+        
+    }
+
+    function updateUIWithNextBillingDate(nextBillingDate) {
+        const currentUser = sessionStorage.getItem("currentUser");
+
+        if (currentUser) {
+            const userInfo = JSON.parse(currentUser);
+
+            const userInfoDiv1 = document.getElementById('userInfo-r');
+            const userInfoDiv2 = document.getElementById('userInfo2');
+
+            let lockerMessage = '';
+
+            if (userInfo.isLocker === "-1") {
+                lockerMessage = '사물함이 등록되어 있지 않습니다.';
+            } else {
+                lockerMessage = `고객님의 사물함 비밀번호는 ${userInfo.isLocker}입니다.`;
+            }
+
+            const storedNextBillingDate = sessionStorage.getItem('nextBillingDate');
+            const displayNextBillingDate = storedNextBillingDate || nextBillingDate;
+
+            const currentDate = new Date();
+            const lastDate = new Date(displayNextBillingDate);
+            const timeDiff = lastDate.getTime() - currentDate.getTime();
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            const dDayMessage = daysDiff >= 0 ? `만료일까지 D-${daysDiff}` : '정기결제등록이 되어있지 않습니다.';
+
+            userInfoDiv1.innerHTML = `
+                <p>${userInfo.userNm}</p>
+                <span>정기결제 마감일 ${displayNextBillingDate} / ${dDayMessage}</span>
+            `;
+
+            userInfoDiv2.innerHTML = `
+                <span>${lockerMessage}</span>
+            `;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const storedNextBillingDate = sessionStorage.getItem('nextBillingDate');
+        if (storedNextBillingDate) {
+            updateUIWithNextBillingDate(storedNextBillingDate);
+        } else {
+            console.log("사용자 정보 없음");
+        }
+    });
 </script>
 </html>

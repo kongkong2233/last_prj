@@ -8,11 +8,45 @@
     <link href="board.css" rel="stylesheet" type="text/css">
     <script src="./sidebar.js"></script>
 <style>
+    .hidden {
+        display: none;
+    }
 
+    #messageContainer {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #messageContent {
+        text-align: center;
+    }
+
+    #closeButton {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        font-weight: 500;
+    }
 </style>
 </head>
 <body>
     <div class="container">
+        <div id="messageContainer" class="hidden">
+            <div id="messageContent">
+                <p>12월 크리스마스 전용 등록 쿠폰 메시지: X-mas</p>
+                <p>등록 페이지로 이동합니다.</p>
+                <button id="closeButton">닫기</button>
+            </div>
+        </div>
+
         <div class="topNav">
             <div class="topNav-box1" onclick="location.href='main.html'">
                 <img src="images/sangmyung.jpg" class="sangmyungImg">
@@ -73,4 +107,23 @@
         </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.location.pathname.includes('notice5.html')) {
+            showMessage();
+        }
+    });
+
+    function showMessage() {
+        const messageContainer = document.getElementById('messageContainer');
+        const closeButton = document.getElementById('closeButton');
+
+        messageContainer.classList.remove('hidden');
+
+        closeButton.addEventListener('click', function () {
+            window.location.href = 'registration.html';
+        });
+    }
+</script>
 </html>
