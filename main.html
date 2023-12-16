@@ -15,16 +15,17 @@
         margin-top: 10px;
         position: relative;
         margin: auto;
+        overflow: hidden;
     }
 
     .slides {
         display: flex;
-        transition: transform 0,5s ease-in-out;
+        transition: transform 0.5s ease;
     }
 
     .slide img {
         width: 100%;
-        height: 450px;
+        height: auto;
         object-fit: none;
     }
 
@@ -244,12 +245,12 @@
         </div>
         <div class="slide">
             <div class="slides">
-                <!-- <img src="images/sldieImg1.png">
+                <img src="images/sldieImg1.png">
                 <img src="images/slideImg2.png">
-                <img src="images/slideImg3.png"> -->
+                <img src="images/slideImg3.png">
             </div>
-            <button class="prev" onclick="chageSlide(-1)">&#10094;</button>
-            <button class="next" onclick="chageSlide(1)">&#10095;</button>
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
         </div>
         <div class="select">
             <div class="select-box1" onclick="location.href='health-guide.html'">
