@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <div class="notice">
+        <div class="notice1">
             <div><h2>&nbsp;운동기구 사용방법</h2></div>
             <div class="guide-box1">
                 <div class="box1">
@@ -125,7 +125,7 @@
                             <b>[ 숄더 프레스 운동방법 ]</b></p></h3>
                         <table><tr>
                         <td class="tbl-td1">
-                            <img src="./images/숄더프레스.png" style="width:90%;"> 
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/3vLgBPNgwYM?si=bLWWmbNFEHbzvQco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </td>
                         <td class="tbl-td2"><b>
                         - 운동부위 : 어깨 전면 삼각근과 회전근개<br><br>
@@ -142,7 +142,7 @@
                             <b>[ 랫풀 다운 운동방법 ]</b></p></h3>
                         <table><tr>
                         <td class="tbl-td1">
-                            <img src="./images/랫풀 다운.png" style="width:95%;"> 
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/7tKh-Rwv1nc?si=rvhlaZuek0qtB28A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
                         </td>
                         <td class="tbl-td2"><b>
                         - 운동부위 : 등근육과 이두근<br><br>
@@ -159,7 +159,7 @@
                             <b>[ 레그 프레스 운동방법 ]</b></p></h3>
                         <table><tr>
                         <td class="tbl-td1">
-                            <img src="./images/레그 프레스.png" style="width:95%;"> 
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/IBHkruAkUPs?si=QuLoWtexhOcV03DW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </td>
                         <td class="tbl-td2"><b>
                         - 운동부위 : 대퇴사 두근(허벅지 앞),둔근(엉덩이),햄스트링(허벅지 뒤)<br><br>
@@ -201,7 +201,7 @@
         </div>
 
         
-        <div class="notice">
+        <div class="notice1">
             <div><h2>&nbsp;신체부위별 추천 운동</h2></div>
             <div class="guide-box1">
                 <div class="box1">
@@ -283,39 +283,41 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            const tabList  = document.querySelectorAll('.guide-box1 .box2 .menu1 ul');
-            const contents = document.querySelectorAll('.guide-box1 .box1 .cont')
-            let activeCont = ''; // 현재 활성화 된 컨텐츠 (기본:#tab1 활성화)
-          
-            for(var i = 0; i < tabList.length; i++){
-                tabList[i].querySelector('.btn').addEventListener('click', function(e)  {
-                e.preventDefault();
-
-                for(var j = 0; j < tabList.length; j++){                  
-                  tabList[j].classList.remove('is_on');  // 나머지 버튼 클래스 제거                          
-                  contents[j].style.display = 'none';    // 나머지 컨텐츠 display:none 처리
-                }
-                          
-                this.parentNode.classList.add('is_on');  // 버튼 관련 이벤트                   
-                activeCont = this.getAttribute('href');  // 버튼 클릭시 컨텐츠 전환
-                document.querySelector(activeCont).style.display = 'block';
-
-                if (activeCont == "#tab1" || activeCont == "#tab2" || activeCont == "#tab3") {
-                  tabList[3].classList.add('is_on');     // 나머지 버튼 클래스 제거                          
-                  contents[3].style.display = 'block';   // 나머지 컨텐츠 display:none 처리
-                }
-                else {
-                  tabList[0].classList.add('is_on');     // 나머지 버튼 클래스 제거                          
-                  contents[0].style.display = 'block';   // 나머지 컨텐츠 display:none 처리
-                }
-
-              });
-            }
-          </script>
-
         
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabContainers = document.querySelectorAll('.guide-box1');
+
+        tabContainers.forEach(function (container) {
+            const tabButtons = container.querySelectorAll('.box2 .menu1 .btn');
+            const tabContents = container.querySelectorAll('.box1 .cont');
+
+            tabButtons.forEach(function (button) {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetTabId = this.getAttribute('href');
+                    const targetContent = container.querySelector(targetTabId);
+
+                    tabButtons.forEach(function (btn) {
+                        btn.parentElement.classList.remove('is_on');
+                    });
+
+                    tabContents.forEach(function (content) {
+                        content.classList.remove('active');
+                    });
+
+                    this.parentElement.classList.add('is_on');
+
+                    targetContent.classList.add('active');
+                });
+            });
+        });
+    });
+</script>
+
+
 </html>
