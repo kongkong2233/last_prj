@@ -64,7 +64,7 @@
     .locker-in {
         width: 900px;
         height: auto;
-        background-color: #D8DAE5;
+        background-color: #ecefff;
         border-radius: 0px 15px 15px 0px;
     }
 
@@ -225,6 +225,36 @@
         border: solid 1px black;
         font-family: Pretendard;
     }
+
+    .locker-password input {
+        margin-top: 10px;
+        width: 70%;
+        padding: 5px 10px 5px 10px;
+        border-radius: 8px;
+        border: solid 1px black;
+        font-family: Pretendard;
+    }
+
+    .locker-password button {
+        border-radius: 8px;
+        border: none;
+        background-color: #3262DC;
+        color: white;
+        font-family: Pretendard;
+        padding: 6px 10px 6px 10px;
+    }
+
+    .locker-text {
+        font-size: 18px;
+        font-weight: 500;
+        margin-left: 50px;
+        margin-top: 40px;
+    }
+
+    .locker-text-box {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
 </style>
 </head>
 <body>
@@ -283,9 +313,21 @@
             <div class="locker-password">
                 <p>사물함</p>
                 <div id="userInfo2"></div>
+                <div id="lockerSection" style="display: none;">
+                    <input type="text" id="newLockerValue" placeholder="새로운 사물함 값 입력">
+                    <button id="registerLockerButton">등록하기</button>
+                </div>
             </div>
             <div class="locker-in">
-                
+                <p class="locker-text">사물함 이용규칙</p>
+                <div class="locker-text-box">
+                    <p>-음식물은 넣어두지 말아주세요.</p>
+                    <p>-비밀번호를 잊어버리셨다면 카운터에 문의해주세요.</p>
+                    <p>- 등록 후에도 매장 내 사물함이 등록되어 있지 않다면 카운터에 문의해주세요.</p>
+                    </br>
+                    <p>상명대학교 천안캠퍼스 스포츠 센터를 이용해주셔서 감사합니다.</p>
+                    <p>즐거운 운동생활되세요.</p>
+                </div>
             </div>
         </div>
         <div class="registration">
@@ -343,6 +385,7 @@
                         <div class="pay-box1" id="pay-box1">
                             <p>카드 결제</p>
                             <input type="text" placeholder="카드 번호를 입력해주세요." id="cardNumber">
+                            <input type="text" placeholder="cvc 3자리를 입력해주세요." id="cvcNumber">
                         </div>
                         <div class="pay-box2" id="pay-box2">
                             <p>현금 결제로 정기 결제 시</p>
@@ -380,6 +423,12 @@
 
             if (userInfo.isLocker === "-1") {
                 lockerMessage = '사물함이 등록되어 있지 않습니다.';
+
+                const lockerSection = document.getElementById('lockerSection');
+                lockerSection.style.display = ' block';
+
+                const registerLockerButton = document.getElementById('registerLockerButton');
+                registerLockerButton.addEventListener('click', registerLocker);
             } else {
                 lockerMessage = `고객님의 사물함 비밀번호는 ${userInfo.isLocker}입니다.`;
             }
@@ -395,6 +444,36 @@
         } else {
             console.log("사용자 정보 없음");
         }
+
+        registerLockerButton.addEventListener('click', registerLocker);
+
+        function registerLocker() {
+            if (!currentUser) {
+                console.error('사용자 정보를 찾을 수 없습니다.');
+                return;
+            }
+
+            const userInfo = JSON.parse(currentUser);
+
+            const newLockerValueInput = document.getElementById('newLockerValue');
+            const newLockerValue = newLockerValueInput.value.trim();
+
+            if (newLockerValue.length !== 4 || isNaN(newLockerValue)) {
+                alert('입력한 번호를 다시 한 번 확인해주세요.');
+                return;
+            }
+
+            userInfo.isLocker = newLockerValue;
+
+            sessionStorage.setItem('currentUser', JSON.stringify(userInfo));
+
+            const lockerSection = document.getElementById('lockerSection');
+            lockerSection.style.display = 'none';
+
+            alert('사물함 번호가 등록되었습니다.')
+            location.reload();
+        }
+
 
         function updatePrice(selectedMonths, couponCode) {
             const pricePerMonth = 10000;
@@ -499,9 +578,10 @@
 
         if (paymentMethod === 'card') {
             const cardNumber = document.getElementById('cardNumber').value;
+            const cvcNumber = document.getElementById('cvcNumber').value;
 
-            if (cardNumber.length !== 16 || isNaN(cardNumber)) {
-                alert('올바른 카드 번호를 입력해주세요.');
+            if (cardNumber.length !== 16 || isNaN(cardNumber) || cvcNumber.length !== 3 || isNaN(cvcNumber)) {
+                alert('올바른 카드 번호 또는 CVC 번호를 입력해주세요.');
                 return;
             }
         } else if (paymentMethod === 'coupon') {
