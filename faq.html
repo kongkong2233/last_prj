@@ -47,6 +47,7 @@
                     <p onclick="location.href='faq.html'">고객문의</p>
                     <p onclick="location.href='notice.html'">공지사항</p>
                     <p onclick="location.href='trainer.html'">트레이너 소개</p>
+                    <p onclick="logout()" id="logoutButton">로그아웃</p>
                 </div>
             </div>
         </div>       
@@ -59,6 +60,33 @@
                 <p style="flex-basis: 80%;">제목</p>                
             </div>
             <div class="faq-in-box">
+
+                <div class="faq-q" id="que-7">
+                    <p style="flex-basis: 10%;">7</p>
+                    <p style="flex-basis: 10%;">시설 이용</p>
+                    <p style="flex-basis: 80%;"><a href="#">운동기구는 몇 개 있나요?</a></p>                    
+                </div>
+                <div class="answer" id="ans-7">
+                    3개 있습니다.
+                </div>
+
+                <div class="faq-q" id="que-6">
+                    <p style="flex-basis: 10%;">6</p>
+                    <p style="flex-basis: 10%;">오류 개선</p>
+                    <p style="flex-basis: 80%;"><a href="#">사이트에 왜 버그가 많나요?</a></p>                    
+                </div>
+                <div class="answer" id="ans-6">
+                    항상 최선을 다하는 K동 헬스장이 되겠습니다.
+                </div>
+
+                <div class="faq-q" id="que-5">
+                    <p style="flex-basis: 10%;">5</p>
+                    <p style="flex-basis: 10%;">자유</p>
+                    <p style="flex-basis: 80%;"><a href="#">치킨 먹어도 되요?</a></p>                    
+                </div>
+                <div class="answer" id="ans-5">
+                    한 세트 더하시죠. 고객님.
+                </div>
 
                 <div class="faq-q" id="que-4">
                     <p style="flex-basis: 10%;">4</p>
@@ -79,7 +107,7 @@
                 <div class="faq-q" id="que-3">
                     <p style="flex-basis: 10%;">3</p>
                     <p style="flex-basis: 10%;">시설 이용</p>
-                    <p style="flex-basis: 80%;"><a href="#">회원증 분실 시 재발급 절차</a></p>                    
+                    <p style="flex-basis: 80%;"><a href="#">회원증 분실 시 재발급 절차(FAQ)</a></p>                    
                 </div>
                 <div class="answer" id="ans-3">
                     &nbsp;1. 안내데스크에 회원증 분실을 신고합니다.<br>
@@ -89,7 +117,7 @@
                 <div class="faq-q" id="que-2">
                     <p style="flex-basis: 10%;">2</p>
                     <p style="flex-basis: 10%;">시설 이용</p>
-                    <p style="flex-basis: 80%;"><a href="#">스포츠센터 주차요금 기준</a></p>                    
+                    <p style="flex-basis: 80%;"><a href="#">스포츠센터 주차요금 기준(FAQ)</a></p>                    
                 </div>
                 <div class="answer" id="ans-2">
                     <b>- 스포츠센터 주차장은 유료입니다. <br><br>
@@ -103,7 +131,7 @@
                 <div class="faq-q" id="que-1">
                     <p style="flex-basis: 10%;">1</p>
                     <p style="flex-basis: 10%;">시설 이용</p>
-                    <p style="flex-basis: 80%;"><a href="#">스포츠센터 이용시간</a></p>                    
+                    <p style="flex-basis: 80%;"><a href="#">스포츠센터 이용시간(FAQ)</a></p>                    
                 </div>
                 <div class="answer" id="ans-1">
                     <b>- 운영시간</b><br>
@@ -116,29 +144,28 @@
                 <div class="faq-q"></div>
             </div>
         </div>
-
-        <script>
-            const items = document.querySelectorAll('.faq-q');
-          
-            function openCloseAnswer() {
-              const answerId = this.id.replace('que', 'ans');
-          
-              if(document.getElementById(answerId).style.display == 'block') {
-                document.getElementById(answerId).style.display = 'none';
-              } 
-              else {
-
-                for(var j = 1; j < items.length; j++)       
-                    document.getElementById( 'ans-'+ j.toString() ).style.display = 'none';
-                           
-                document.getElementById(answerId).style.display = 'block';
-              }
-            }
-          
-            items.forEach(item => item.addEventListener('click', openCloseAnswer));
-        </script>
-
     </div>
     <br><br>
 </body>
+
+<script>
+    const items = document.querySelectorAll('.faq-q');
+  
+    function openCloseAnswer() {
+      const answerId = this.id.replace('que', 'ans');
+  
+      if(document.getElementById(answerId).style.display == 'block') {
+        document.getElementById(answerId).style.display = 'none';
+      } 
+      else {
+
+        for(var j = 1; j < items.length; j++)       
+            document.getElementById( 'ans-'+ j.toString() ).style.display = 'none';
+                   
+        document.getElementById(answerId).style.display = 'block';
+      }
+    }
+  
+    items.forEach(item => item.addEventListener('click', openCloseAnswer));
+</script>
 </html>

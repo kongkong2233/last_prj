@@ -28,8 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
     
         userInfoText.innerHTML = `
             ${userInfo.userNm}
-        `
+        `;
     } else {
         console.log("사용자 정보 없음");
     }
 });
+
+function logout() {
+    const currentUser = sessionStorage.getItem('currentUser');
+
+    if (!currentUser) {
+        alert('로그인 된 상태가 아닙니다.');
+        return;
+    }
+    
+    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('nextBillingDate');
+
+    alert('로그아웃되었습니다.');
+
+    location.href='main.html';
+}

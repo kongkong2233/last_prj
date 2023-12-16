@@ -65,6 +65,12 @@ body {
     cursor: pointer;
 }
 
+.user-text1 {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .sidebar-login p {
     font-size: 18px;
     margin-left: 10px;
