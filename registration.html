@@ -472,6 +472,25 @@
         document.getElementById(boxId).style.display = 'block';
     }
 
+    function calculateNextBillingDate(selectedMonths, registrationDate, lastDate, storedNextBillingDate) {
+        let nextBillingDate = "";
+
+        if (storedNextBillingDate) {
+            const storedDate = new Date(storedNextBillingDate);
+            storedDate.setMonth(storedDate.getMonth() + selectedMonths);
+            nextBillingDate = storedDate.toISOString().split('T')[0];
+        } else if (lastDate > registrationDate) {
+            lastDate.setMonth(lastDate.getMonth() + selectedMonths);
+            nextBillingDate = lastDate.toISOString().split('T')[0]
+        } else {
+            registrationDate.setMonth(registrationDate.getMonth() + selectedMonths);
+            lastDate = new Date(registrationDate);
+            nextBillingDate = lastDate.toISOString().split('T')[0];
+        }
+
+        return nextBillingDate;
+    }
+
     function validateAndRegister() {
         const selectedPlan = document.querySelector('input[name="chk_info"]:checked');
         const selectedPlanMonths = selectedPlan ? parseInt(selectedPlan.value, 10) : 0;
@@ -495,18 +514,14 @@
 
         const registrationDate = new Date();
         const selectedMonths = selectedPlanMonths;
-
-        registrationDate.setMonth(registrationDate.getMonth() + selectedMonths);
-
-        const year = registrationDate.getFullYear();
-        const month = String(registrationDate.getMonth() + 1).padStart(2, '0');
-        const day = String(registrationDate.getDate()).padStart(2, '0');
-        const nextBillingDate = `${year}-${month}-${day}`;
+        const currentUser = sessionStorage.getItem("currentUser");
+        const userInfo = JSON.parse(currentUser);
+        const lastDate = userInfo.lastDate ? new Date(userInfo.lastDate) : null;
+        
+        const storedNextBillingDate = sessionStorage.getItem('nextBillingDate');
+        const nextBillingDate = calculateNextBillingDate(selectedMonths, registrationDate, lastDate,storedNextBillingDate);
 
         sessionStorage.setItem('nextBillingDate', nextBillingDate);
-
-        const currentUser = sessionStorage.getItem("currentUser");
-
         updateUIWithNextBillingDate(nextBillingDate);
 
         alert('정기 회원 등록이 완료되었습니다.');
